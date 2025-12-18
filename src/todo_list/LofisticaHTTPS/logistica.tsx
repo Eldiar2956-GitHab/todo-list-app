@@ -13,7 +13,7 @@ export function LogicaHousting() {
   const masNew = useCreatNewTasck((state) => state.masNew);
   const [isModalca, setIsModalca] = useState(false);
   return (
-    <BrowserRouter>
+    <>
       <button onClick={() => setIsModalca(true)}>+New Task</button>
 
       <nav>
@@ -34,7 +34,7 @@ export function LogicaHousting() {
       </Routes>
       {/* Не трогой это снизу так как он работает для открытий и закрытий приложение  */}
       {isModalca && <Modal onClose={() => setIsModalca(false)} />}
-    </BrowserRouter>
+        </>
   );
 }
 

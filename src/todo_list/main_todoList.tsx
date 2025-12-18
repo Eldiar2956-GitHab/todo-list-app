@@ -42,29 +42,39 @@ export default function MainTodoList({ folderSlug }: Props){
         onChange={e=>setInputText(e.target.value)}/>
         <button onClick={()=>{addTodoText(inputText, folderSlug); setInputText('')}}
         disabled={!inputText.trim()}>Добавить</button>
-        <ul>{visibleTodos.map((ind)=>(
-            <li key={ind.id}>
-                {editingId===ind.id ? (
-                    <input value={redactInputText} 
-                    onChange={(e)=>setRedactInputText(e.target.value)}
-                    placeholder="Редактировать"/>
-                ) : (
-                    <>
-                    <span className={"todo_Text"+`${ind.done}`}>{ind.text}</span>
-                    {ind.done===false ? <p>Не зделан</p> : <p>Зделан</p>}
-                    </>
-                )}
-            <button onClick={()=>removeTodoText(ind.id)}>Удалить</button>
-            <button onClick={()=>provActivZadach(ind.id)}>Зделан</button>
-             {editingId===ind.id ? (
-                    <button onClick={saveEdit}>Сохранить</button>
-                ):(
-                <button onClick={()=>startEdit(ind.id,ind.text)}>Редактировать</button>
-                )}
-            </li>
-        ))}</ul>
-    </div>
-
+        <ul>
+            {visibleTodos.map((ind) => {
+                const isDuplicate = todos.filter(todo => todo.text === ind.text).length > 1;
+                return (
+                <li key={ind.id}>
+                    {editingId === ind.id ? (
+                        <input
+                        value={redactInputText}
+                        onChange={(e) => setRedactInputText(e.target.value)}
+                        placeholder="Редактировать"/>) : (                            
+                        <>
+                            <span className={"todo_Text" + `${ind.done}`}>
+                            {isDuplicate ? (
+                                <span style={{color: 'red'}}>Ошибка повторяется: {ind.text}</span>
+                            ) : (
+                                ind.text
+                            )}
+                            </span>
+                            {ind.done === false ? <p>Не зделан</p> : <p>Зделан</p>}
+                        </>
+                        )}
+                        <button onClick={() => removeTodoText(ind.id)}>Удалить</button>
+                        <button onClick={() => provActivZadach(ind.id)}>Зделан</button>
+                        {editingId === ind.id ? (
+                        <button onClick={saveEdit}>Сохранить</button>
+                        ) : (
+                        <button onClick={() => startEdit(ind.id, ind.text)}>Редактировать</button>
+                        )}
+                    </li>
+                    );
+                })}
+                </ul>
+            </div>
         </>
     )
 }
