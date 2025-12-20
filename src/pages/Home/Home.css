@@ -1,0 +1,15 @@
+.Seartch_addURl{
+    display: flex;
+    justify-content: space-between;
+}
+.boxsSearch{
+    flex:1;
+}
+.boxsAdd{
+    flex:1;
+    text-align: right;
+}
+.openCatalog{
+    margin-top: 20em;
+    margin-left:45em;
+}

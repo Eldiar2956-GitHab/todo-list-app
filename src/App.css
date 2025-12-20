@@ -1,0 +1,13 @@
+.error{
+    color:red;
+}
+.logo_burgerMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.logo{
+    width: 80px;
+    height: 80px;
+}

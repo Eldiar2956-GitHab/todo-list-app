@@ -1,0 +1,97 @@
+.boxsMainCatalog {
+    position: fixed;
+    top: 0;
+    left: -320px; 
+    width: 300px;
+    height: 100dvh;
+    background-color: #222831;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    z-index: 1000;
+}
+.boxsMainCatalog.active {
+    left: 0;
+}
+
+.profile_section {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.imgProfil {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin-bottom: 15px;
+    clip-path: circle(50%); 
+}
+
+.lain {
+    width: 100%;
+    height: 1px;
+    background-color: #393e46;
+    margin: 20px 0;
+}
+
+.boxsUrl {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+}
+
+.catalogText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 50px;
+    color: #eeeeee;
+    background-color: #6c758d;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+    border: none;
+}
+
+.catalogText:hover {
+    background-color: #848da5;
+    transform: translateY(-2px);
+}
+
+.btnClose {
+    width: 220px;
+    height: 50px;
+    background: transparent;
+    color: white;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btnClose:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.openCatalog {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

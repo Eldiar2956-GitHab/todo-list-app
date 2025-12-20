@@ -1,6 +1,5 @@
 import { useCreatTodoList } from "./zustand"
 import { useState , useEffect} from "react"
-import Searcht from "./LofisticaHTTPS/Search"
 
 type Props = {
     folderSlug?: string
@@ -36,8 +35,7 @@ export default function MainTodoList({ folderSlug }: Props){
 
     return(
         <>        
-        <div>
-            <Searcht/>
+        <div className="boxs_mainTodoList">
         <input placeholder="Создать задачу" type="text" value={inputText}
         onChange={e=>setInputText(e.target.value)}/>
         <button onClick={()=>{addTodoText(inputText, folderSlug); setInputText('')}}
@@ -55,7 +53,7 @@ export default function MainTodoList({ folderSlug }: Props){
                         <>
                             <span className={"todo_Text" + `${ind.done}`}>
                             {isDuplicate ? (
-                                <span style={{color: 'red'}}>Ошибка повторяется: {ind.text}</span>
+                                <span className="error">Ошибка повторяется: {ind.text}</span>
                             ) : (
                                 ind.text
                             )}
