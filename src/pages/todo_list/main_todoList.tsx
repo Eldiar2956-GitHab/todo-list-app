@@ -1,5 +1,6 @@
 import { useCreatTodoList } from "./zustand"
 import { useState , useEffect} from "react"
+import '../todo_list/LofisticaHTTPS/main_todoList.css'
 
 type Props = {
     folderSlug?: string
@@ -36,17 +37,18 @@ export default function MainTodoList({ folderSlug }: Props){
     return(
         <>        
         <div className="boxs_mainTodoList">
-        <input placeholder="Создать задачу" type="text" value={inputText}
+        <input className="inputAddText" placeholder="Создать задачу" type="text" value={inputText}
         onChange={e=>setInputText(e.target.value)}/>
-        <button onClick={()=>{addTodoText(inputText, folderSlug); setInputText('')}}
+        <button className="BtnAdd" onClick={()=>{addTodoText(inputText, folderSlug); setInputText('')}}
         disabled={!inputText.trim()}>Добавить</button>
-        <ul>
+        <ul className="UlBoxs">
             {visibleTodos.map((ind) => {
                 const isDuplicate = todos.filter(todo => todo.text === ind.text).length > 1;
                 return (
-                <li key={ind.id}>
+                <li key={ind.id} className="boxsLi">
                     {editingId === ind.id ? (
                         <input
+                        className="inputRedactor"
                         value={redactInputText}
                         onChange={(e) => setRedactInputText(e.target.value)}
                         placeholder="Редактировать"/>) : (                            
@@ -58,16 +60,18 @@ export default function MainTodoList({ folderSlug }: Props){
                                 ind.text
                             )}
                             </span>
-                            {ind.done === false ? <p>Не зделан</p> : <p>Зделан</p>}
+                            {ind.done === false ? <p className="notParagrafActive">Не зделан</p> : <p className="paragravActive">Зделан</p>}
                         </>
                         )}
-                        <button onClick={() => removeTodoText(ind.id)}>Удалить</button>
-                        <button onClick={() => provActivZadach(ind.id)}>Зделан</button>
+                        <div className="BtnBoxs">
+                        <button className="BtnDelayt" onClick={() => removeTodoText(ind.id)}>Удалить</button>
+                        <button className="BtnActive" onClick={() => provActivZadach(ind.id)}>Зделан</button>
                         {editingId === ind.id ? (
-                        <button onClick={saveEdit}>Сохранить</button>
+                        <button className="BtnSave" onClick={saveEdit}>Сохранить</button>
                         ) : (
-                        <button onClick={() => startEdit(ind.id, ind.text)}>Редактировать</button>
+                        <button className="BtnRedactor" onClick={() => startEdit(ind.id, ind.text)}>Редактировать</button>
                         )}
+                        </div>
                     </li>
                     );
                 })}

@@ -8,38 +8,37 @@ import Searcht from '../todo_list/LofisticaHTTPS/Search';
 import MainTodoList from '../todo_list/main_todoList';
 // import { Modal } from '../todo_list/LofisticaHTTPS/Madal';
 import LogicaHousting  from '../todo_list/LofisticaHTTPS/logistica';
+import ButtonLogist from '../todo_list/LofisticaHTTPS/buttonlogistica';
 import "./Home.css"
 export default function Home(){
 
     return(
             <>
-    <div className='mainBoxas'>
-      <div className='leftCatologMain'>
-        <CatalogMain/>
-      </div>
-      <div className='rigthCatologMain'>
-        <div className='logo_burgerMenu'>
-          <img className='logo' alt='logo' src={logo}/>
-          <Burgermenu/>
-        </div>
-        <p className="lain"></p>
-        <div className='Seartch_addURl'>
-          <div className='boxsSearch'>
-            <Searcht/>
-          </div>
-          <div className='boxsAdd'>
-             <LogicaHousting/>
-          </div>
-        </div>
-        <div className='TodoList'>
-             <h1>Главный Экран</h1>
-             <MainTodoList/>
-        </div>
-      </div>
-    </div>
-    <div className="mainBoxs">
+    <div className='mainContainer'>
+  <main className='content'>
+    <header className='topBar'>
+      <img className='logo' alt='logo' src={logo} />
+      <Burgermenu />
+    </header>
 
+    <hr className="divider" />
+    <section className='actionPanel'>
+      <div className='searchWrapper'>
+        <Searcht />
+        <LogicaHousting />
+      </div>
+      <div className='addBtnWrapper'>
+           <CatalogMain />
+      </div>
+    </section>
+    <div className='addBtnComit'>
+      <ButtonLogist/>
     </div>
+    <section className='todoSection'>
+         <MainTodoList />
+    </section>
+  </main>
+</div>
     </>
         )
 }

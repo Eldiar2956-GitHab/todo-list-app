@@ -2,7 +2,7 @@ import { create } from "zustand"
 interface todoInfo {
     id: number;
     text: string;
-    done: boolean;
+    done:boolean;
     folder?: string;
 }
 interface TodoMainFunc {

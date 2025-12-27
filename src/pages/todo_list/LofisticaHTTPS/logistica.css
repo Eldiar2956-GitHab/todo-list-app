@@ -1,0 +1,16 @@
+.BtnLogist{
+    color: white;
+    background-color: #1B9E49;
+    width: 140px;
+    height: 60px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: azure;
+        color: #1B9E49;
+        border:1px solid black;
+    }
+}

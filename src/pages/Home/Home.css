@@ -1,15 +1,59 @@
-.Seartch_addURl{
+.mainContainer{
+    position: relative;
+    padding:5px;
+}
+.topBar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
-.boxsSearch{
-    flex:1;
+.actionPanel{
+    display: flex;
+    align-items: safe;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    padding: 0 10px;
 }
-.boxsAdd{
-    flex:1;
-    text-align: right;
+.URLName{
+    font-size: 16px;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    line-height: 20px;
+    padding: 16px;
+    border: 1px solid #1B9E49;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin: 0 3px;
+    text-decoration: none;
+    color: #1A5D00;
+    transition: all 0.3s ease;
 }
-.openCatalog{
-    margin-top: 20em;
-    margin-left:45em;
+.URLName:focus, .URLName:hover{
+    color:white;
+    background-color:#1A5D00;
+    text-decoration: underline;
 }
+.addBtnComit{
+    margin:35px 0px;
+    margin-left:4em;
+}
+.todoSection{
+    display: block;
+    margin-left: 4em;
+}
+.searchWrapper{
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    gap:10px;
+    margin-left:4em;
+}
+/* .openCatalog{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+} */

@@ -1,4 +1,5 @@
 import { useState,useMemo} from "react";
+import "../LofisticaHTTPS/Search.css"
 import { useCreatTodoList } from "../zustand";
 
 type Todo={
@@ -29,14 +30,15 @@ export default function Searcht(){
     return(
         <>
              <div>
-                <input placeholder="Поиск" value={search} 
+                <input className="SearchGlobal" 
+                placeholder="Поиск" value={search} 
                 onChange={(e)=>setSearch(e.target.value)}/>
                 {/* {resaut.length>0 ? <p>Поиск...</p> : <p>Текст ненайден</p>} */}
                 {filteredTodos.length>0 ? (
                     <ul>{filteredTodos.map((todo)=>(
                         <li key={todo.id}>{todo.text}</li>
                     ))}</ul>
-                ):(<p>Пусто...</p>)}
+                ):(<p className="SearchNull">Пусто...</p>)}
             </div>
         </>
     )

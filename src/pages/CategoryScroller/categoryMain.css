@@ -85,13 +85,16 @@
 }
 
 .openCatalog {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    background-color: #00adb5;
+    position: static;
+    padding: 24px 20px;
+    background-color: #1a5d00;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    margin-top: -13%;
+    transition: background-color 0.3s ease;
+    &:hover{
+        box-shadow: 5px 5px 10px rgba(41, 170, 47, 0.2);
+    }
 }

@@ -4,18 +4,11 @@
 // import Burgermenu from './components/BurgerMenu/BergerMenu';
 // import CatalogMain from './pages/CategoryScroller/categoryMain';
 import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './pages/todo_list/LofisticaHTTPS/Routing';
 // import logo from "../src/assets/planly-logo 1.png"
 // import Searcht from '../../todo-list-app/src/pages/todo_list/LofisticaHTTPS/Search';
 // import { Modal } from '../src/pages/todo_list/LofisticaHTTPS/Madal';
-import { Routes, Route } from "react-router-dom";
-import NewsTest from "../src/pages/todo_list/LofisticaHTTPS/Error_404_";
-import ActiveZadine from "../src/pages/active_Zadanie/Active_Zadanie"
-import Profil from "../src/pages/Profil/Profil";
-import Zadanie from './pages/todo_list/LofisticaHTTPS/zadacha1';
-import IzminenieFon from "../src/components/BurgerMenu/fon_Izim/foon_izim";
-import Statistica from "../src/pages/statistica/Statistica";
-// import MainTodoList from "../main_todoList";
-import Home from "../src/pages/Home/Home";
+
 import './App.css';
     {/* <Burgermenu/>
       <div>
@@ -30,15 +23,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-          <Routes>
-            <Route path="*" element={<Home/>} />
-            <Route path="/:slug" element={<Zadanie />} />
-            <Route path="*" element={<NewsTest/>} />
-            <Route path="/profil" element={<Profil/>}/>
-            <Route path="/statistica" element={<Statistica/>}/>
-            <Route path="/ceatFon" element={<IzminenieFon/>}/>
-            <Route path="/activZadanie" element={<ActiveZadine/>}/>
-          </Routes>
+    <AppRoutes/>
 
     </BrowserRouter>
     {/* <div className='mainBoxas'>

@@ -41,28 +41,16 @@
 //   );
 // }
 
-import { useCreatNewTasck } from "../zustand";
 import { Modal } from "../LofisticaHTTPS/Madal";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import "../LofisticaHTTPS/logistica.css"
 
 export default function LogicaHousting() {
-  const masNew = useCreatNewTasck((state) => state.masNew);
   const [isModalca, setIsModalca] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsModalca(true)}>+New Task</button>
-      <nav className="boxsURlName">
-        {masNew.map((ind) => (
-          <Link className="URLName" to={`${ind.slug}`} key={ind.id}>
-            {ind.name} 
-          </Link>
-        ))}
-      </nav>
-
-      <Outlet />
-
+      <button className="BtnLogist" onClick={() => setIsModalca(true)}>+New Task</button>
       {isModalca && <Modal onClose={() => setIsModalca(false)} />}
     </>
   );

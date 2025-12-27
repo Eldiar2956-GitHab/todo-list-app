@@ -13,7 +13,7 @@ export default function CatalogMain() {
     return (
         <>
             {!activCatolog && (
-                <button className="openCatalog" onClick={toggleMenu}>Открыть</button>
+                <button className="openCatalog" onClick={toggleMenu}>Menu</button>
             )}
 
             <div className={`boxsMainCatalog ${activCatolog}`}>
