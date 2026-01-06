@@ -1,6 +1,35 @@
 *{
     font-family:Grandstander, sans-serif;
 }
-body{
-    background-color:#212529;
+:root{
+    --bg: #ffffff;
+    --text: #fff;
+    --title: #000;
 }
+body[data-theme="Light_Mode"]{
+    --bg: #212529;
+    --text: #212529;
+    --title: #212529;
+}
+body[data-theme="Dark_Mode"]{
+    background-color: #212529;
+    --bg:#ffffff;
+    --text: #e5e7eb;
+    --title: #f8fafc;
+    h1, h2, h3, h4 {
+  color:var(--bg);
+}
+}
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+h1, h2, h3, h4 {
+  color:var(--title);
+}
+
+/* p, span, li {
+  color: var(--bg);
+} */

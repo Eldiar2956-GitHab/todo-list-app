@@ -1,52 +1,99 @@
 import { create } from "zustand"
+
 interface todoInfo {
     id: number;
     text: string;
-    done:boolean;
+    done: boolean;
     folder?: string;
 }
+
 interface TodoMainFunc {
     todos: todoInfo[];
-    addTodoText: (text: string, folder?: string) => void;
-    locationStor: () => void
-    removeTodoText: (id: number) => void;
-    redactorText: (newText: string, id: number) => void;
-    provActivZadTodo: (id: number) => void;
+    isActivTodos: todoInfo[];
+    filterStatus:string
+    addTodoText: (text: string, folderSlug?: string) => void;
+    locationStor: (folderSlug?:string) => void;
+    removeTodoText: (id: number, currentFilter: string, folderSlug?: string) => void;
+    redactorText: (newText: string, id: number, currentFilter: string, folderSlug?: string) => void;
+    provActivZadTodo: (id: number, currentFilter: string, folderSlug?: string) => void;
+    filterTextMainTodo: (isActiv: string, folderSlug?: string) => void;
 }
-export const useCreatTodoList = create<TodoMainFunc>((set) => ({
-    todos:[],
-    addTodoText:(text:string, folder?: string)=>set((state)=>{
-        const newTodos=[...state.todos,{id:Date.now(),text,done:false, folder}];
-        localStorage.setItem("todos",JSON.stringify(newTodos));
-        return {todos:newTodos}
 
-    }),
-    locationStor:()=>{
-        const stored=localStorage.getItem("todos");
-        if(stored){
-            set({todos:JSON.parse(stored)})
+const applyFilters = (todos: todoInfo[], filterStatus: string, folderSlug?: string) => {
+    return todos.filter((item) => {
+        const matchesFolder = folderSlug ? item.folder === folderSlug : !item.folder;
+
+        let matchesStatus = true;
+        if (filterStatus === "active") matchesStatus = item.done === true;
+        if (filterStatus === "notActive") matchesStatus = item.done === false;
+
+        return matchesFolder && matchesStatus;
+    });
+};
+
+export const useCreatTodoList = create<TodoMainFunc>((set) => ({
+    todos: [],
+    isActivTodos: [],
+    filterStatus:"all",
+    locationStor: (folderSlug) => {
+        const stored = localStorage.getItem("todos");
+        if (stored) {
+            const data = JSON.parse(stored);
+            set({ 
+                todos: data, 
+                isActivTodos: applyFilters(data, "all", folderSlug) 
+            });
         }
     },
-    removeTodoText:(id:number)=>set((state)=>{
-        const newTodos=state.todos.filter((ind)=>ind.id!==id);
-        localStorage.setItem("todos",JSON.stringify(newTodos));
-        return {todos:newTodos}
-    }),
-    redactorText: (newText: string, id: number) => set((state) => {
-    const updatedTodos = state.todos.map(todo =>
-        todo.id === id ? { ...todo, text: newText } : todo
+addTodoText: (text: string, folderSlug?: string) => set((state) => {
+    const newTodo = { id: Date.now(), text, done: false, folder: folderSlug };
+    const updatedTodos = [...state.todos, newTodo];
+    
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    
+    const filtered = updatedTodos.filter(t => 
+        folderSlug ? t.folder === folderSlug : !t.folder
     );
-    localStorage.setItem("todos",JSON.stringify(updatedTodos))
-    return{todos:updatedTodos};
-    }),
-    provActivZadTodo:(id:number)=>set((state)=>{
-        const newDoun=state.todos.map((ind)=>
-        ind.id===id ? {...ind,done:!ind.done} : ind
-    );
-        localStorage.setItem("todos",JSON.stringify(newDoun))
-        return{todos:newDoun};
-    })
 
+    return { 
+        todos: updatedTodos, 
+        isActivTodos: filtered 
+    };
+}),
+
+    removeTodoText: (id, currentFilter, folderSlug) => set((state) => {
+        const updatedTodos = state.todos.filter(t => t.id !== id);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
+        
+        return { 
+            todos: updatedTodos, 
+            isActivTodos: applyFilters(updatedTodos, currentFilter, folderSlug) 
+        };
+    }),
+
+    redactorText: (newText, id, currentFilter, folderSlug) => set((state) => {
+        const updatedTodos = state.todos.map(t => t.id === id ? { ...t, text: newText } : t);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
+        
+        return { 
+            todos: updatedTodos, 
+            isActivTodos: applyFilters(updatedTodos, currentFilter, folderSlug) 
+        };
+    }),
+
+    provActivZadTodo: (id, currentFilter, folderSlug) => set((state) => {
+        const updatedTodos = state.todos.map(t => t.id === id ? { ...t, done: !t.done } : t);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
+        
+        return { 
+            todos: updatedTodos, 
+            isActivTodos: applyFilters(updatedTodos, currentFilter, folderSlug) 
+        };
+    }),
+    filterTextMainTodo: (isActiv, folderSlug) => set((state) => ({
+        filterStatus: isActiv,
+        isActivTodos: applyFilters(state.todos, isActiv, folderSlug)
+    }))
 }));
 
 interface NewTasck{
@@ -101,3 +148,17 @@ export const useCreatNewTasck=create<TasckNewText>((set)=>({
         }
     }),
 }))
+
+interface DarkMode {
+    bakColor: boolean;
+    toggleDarkMode: () => void;
+}
+export const useDarkMode = create<DarkMode>((set) => ({
+    bakColor: localStorage.getItem("bakColor") === "true",
+    toggleDarkMode: () => set((state) => {
+        const nextColor = !state.bakColor;
+        localStorage.setItem("bakColor", String(nextColor));
+        return { bakColor: nextColor };
+    }),
+}));
+

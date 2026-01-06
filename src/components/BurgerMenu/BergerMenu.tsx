@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import "../BurgerMenu/BurgerMenu.css";
 import ActiveBurger from "./activBurger";
 
+
 export default function BurgerMenu() {
-    const [active, setActive] = useState("");
+    const [active, setActive] = useState<string>("");
     
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);

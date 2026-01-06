@@ -1,4 +1,4 @@
-.mainContainer{
+.Light_Mode,.Dark_Mode{
     position: relative;
     padding:5px;
 }
@@ -52,8 +52,19 @@
     gap:10px;
     margin-left:4em;
 }
-/* .openCatalog{
-    position: absolute;
-    top: 15px;
-    left: 15px;
-} */
+
+.Light_Mode{
+    background-color: white;
+    color: #212529;
+    height: 100vh;
+}
+.Dark_Mode{
+    background-color: #212529;
+    color-scheme: white;
+    height: 100vh;
+}
+.burdermainTimeToggle{
+    display: flex;
+    align-items: center;
+    gap: 1em;   
+}

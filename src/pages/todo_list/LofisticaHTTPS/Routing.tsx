@@ -6,7 +6,13 @@ import Zadanie from './zadacha1';
 import IzminenieFon from "../../../components/BurgerMenu/fon_Izim/foon_izim";
 import Statistica from "../../statistica/Statistica";
 import Home from "../../Home/Home";
+import { useEffect } from "react";
+import { useDarkMode } from "../zustand";
 export  default function AppRoutes(){
+    let bagColor=useDarkMode((ind)=>ind.bakColor)
+    useEffect(()=>{
+    document.body.style.background = bagColor ? "#212529" : "#767e92";
+    },[bagColor])
     return(
         <>
             <Routes>
