@@ -30,6 +30,9 @@
     background-color: #ddd;
     margin-bottom: 15px;
     clip-path: circle(50%); 
+    mix-blend-mode:color-burn;
+    filter: brightness(1.2) contrast(1.2);
+    border: 2px solid #222831;
 }
 
 .lain {

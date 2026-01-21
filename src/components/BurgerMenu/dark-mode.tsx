@@ -9,7 +9,6 @@ export default function ThemeToggle(){
         document.body.dataset.theme=bakColor ? "Dark_Mode" : "Light_Mode"
     },[bakColor])
 
-
     return (
         <>
 <div className="BtnDarkColor">

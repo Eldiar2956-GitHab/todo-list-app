@@ -1,0 +1,38 @@
+.BlockGrafic {
+  width: 95%;
+  height: 500px;
+  min-height: 300px;
+  margin-top:20px;
+}
+tspan{
+  color: black;
+}
+.StaticCatalog{
+    position: absolute;
+    align-items: center;
+    margin-top: 50px;
+    right: 1pc;
+}
+.main_info_graf{
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin:40px 20px;
+}
+.boxs_graf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+.recharts-default-tooltip{
+  background-color: rgb(33 37 41) !important;
+}
+.recharts-tooltip-item{
+  color: rgb(255, 255, 255) !important;
+}
+.recharts-tooltip-label{
+  color: #fff !important;
+}

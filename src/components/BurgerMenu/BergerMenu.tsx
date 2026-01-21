@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import "../BurgerMenu/BurgerMenu.css";
 import ActiveBurger from "./activBurger";
+import { useDarkMode } from "../../pages/todo_list/zustand";
 
 
 export default function BurgerMenu() {
+    const bak=useDarkMode(t=>t.bakColor)
+    const back=bak===false ? "light" : ""
+
     const [active, setActive] = useState<string>("");
     
     const menuRef = useRef<HTMLDivElement>(null);
@@ -33,7 +37,7 @@ export default function BurgerMenu() {
         <div className="buregerMain">
             <button 
                 ref={buttonRef} 
-                className={`burger_meny ${active}`} 
+                className={`burger_meny_${back} ${active}`} 
                 onClick={toggleMenu} 
                 aria-label="Открыть меню"
             >

@@ -56,13 +56,11 @@
     font-size: 24px;
 }
 .todo_Texttrue{
-    color:white;
     margin-left:4em;
     font-size:24px;
     font-weight: 600;
 }
 .todo_Textfalse{
-    color: white;
     margin-left:4em;
     font-size:24px;
     font-weight: 600;
@@ -77,24 +75,26 @@
  .notParagrafActive{
     color: white;
     position: absolute;
-    top: 17px;
+    top: 20px;
     left: 0;
     background-color: red;
     border-bottom-left-radius:8px;
     text-align: center;
     width: 80px;
     height: 27px;
+    font-size:13px;
  }
  .paragravActive{
     color: white;
     position: absolute;
-    top: 17px;
+    top:20px;
     left: 0;
     background-color: green;
     border-bottom-left-radius:8px;
     text-align: center;
     width: 80px;
     height: 27px;
+    font-size:13px;
 }
 .BtnDelayt,.BtnActive,.BtnSave,.BtnRedactor,.filterTextAss,.filterTextActive,.filterTextNotActiv{
     padding: 15px 25px;

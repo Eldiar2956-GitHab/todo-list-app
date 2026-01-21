@@ -1,52 +1,74 @@
-.burger_meny {
+.burger_meny_light{
   cursor: pointer;
   width: 50px;
   height: 40px;
-    background-color:#212529;
+  background: rgb(118, 126, 146);
 }
-
-.burger_meny div {
+.burger_meny_{
+  cursor: pointer;
+  width: 50px;
+  height: 40px;
+  background-color:#212529
+}
+.burger_meny_ div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
 }
+.burger_meny_light div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 
-.burger_meny span {
+}
+.burger_meny_ span {
   width: 35px;
   height: 5px;
   background: rgb(255, 255, 255);
   transition: 0.3s;
 }
-
-/* Когда active */
-.burger_meny.active span:nth-child(1) {
+.burger_meny_light span {
+  width: 35px;
+  height: 5px;
+  background: rgb(33 37 41);
+  transition: 0.3s;
+}
+.burger_meny_.active span:nth-child(1) {
   transform: rotate(45deg) translate(8px, 8px);
 }
-
-.burger_meny.active span:nth-child(2) {
+.burger_meny_light.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+.burger_meny_.active span:nth-child(2) {
   opacity: 0;
 }
-
-.burger_meny.active span:nth-child(3) {
+.burger_meny_light.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger_meny_.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+.burger_meny_light.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 .active_Https{
   display: none;
 }
-.active_Https.active {
-    display: block;
-    position: absolute;
-    background-color: #0B0E0F;
-    opacity: 0.90;
-    /* width: 18%; */
-    text-align: center;
-    padding: 1px;
-    cursor: pointer;
-    top: 42px;
-    right: 0px;
-    width: 160px;
+.active_Https.active{
+  display: block;
+  position: absolute;
+  background-color: #0B0E0F;
+  opacity: 0.90;
+  text-align: center;
+  padding: 1px;
+  cursor: pointer;
+  top: 42px;
+  right: 0px;
+  width: 160px;
 }
 .buregerMain{
   position: relative;

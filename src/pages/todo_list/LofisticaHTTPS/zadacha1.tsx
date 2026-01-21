@@ -8,7 +8,7 @@ import logo from '../../../assets/planly-logo 1.png'
 import BurgerMenu from '../../../components/BurgerMenu/BergerMenu';
 import Searcht from './Search';
 function Zadanie() {
-  const clearTodos=useCreatTodoList((ind)=>ind.removeTodoText)
+  let clearTodos=useCreatTodoList((ind)=>ind.removeTodoText)
   const todos=useCreatTodoList((ind)=>ind.todos)
     const { slug } = useParams();
     const location = useLocation() as { state?: { name?: string; id?:number} };
@@ -35,7 +35,7 @@ function Zadanie() {
         todos
             .filter((todo) => todo.folder=== slug)
             .forEach((todo) => {
-                clearTodos(todo.id);
+                clearTodos(todo.id,todo.text);
             });
 
         removeNewNameText(numericId); 
@@ -68,7 +68,6 @@ function Zadanie() {
     <section className='todoSection'>
             <nav>
             <h1 className='nameZadanie'>Задача:{https}</h1>
-            <p className='nameSlug'>Slug: {slug}</p>
             <MainTodoList folderSlug={slug} />
             </nav>
     </section>

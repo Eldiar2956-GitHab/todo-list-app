@@ -6,7 +6,11 @@ type Props = {
     folderSlug?: string
 }
 
+
+
 export default function MainTodoList({ folderSlug }: Props){
+  
+
     const todos=useCreatTodoList((state)=>state.todos)
     const addTodoText=useCreatTodoList((state)=>state.addTodoText)
     const removeTodoText=useCreatTodoList((state)=>state.removeTodoText)
@@ -21,7 +25,6 @@ export default function MainTodoList({ folderSlug }: Props){
     const [inputText,setInputText]=useState("")
     const [editingId,setEditingId]=useState<number | null>(null);
     const [redactInputText,setRedactInputText]=useState<string>("")
-    // const [filterText,setFilterText]=useState<string>("all")
 
     const todosInFolder = folderSlug 
     ? todos.filter(t => t.folder === folderSlug) 
@@ -38,13 +41,6 @@ export default function MainTodoList({ folderSlug }: Props){
         setEditingId(id);
         setRedactInputText(text)
     }
-  //     const saveEdit = () => {
-  //   if (editingId !== null) {
-  //     redactor(redactInputText,editingId,"all");
-  //     setEditingId(null);
-  //   }
-  // };
-
   const saveEdit = () => {
     if (editingId !== null) {
         redactor(redactInputText, editingId, "all", folderSlug);
@@ -58,30 +54,11 @@ export default function MainTodoList({ folderSlug }: Props){
     
 }, [folderSlug, locationStora, filterTextMainTodo]);
 
-  // useEffect(() => {
-  //   filterTextMainTodo("all", folderSlug);
-  // }, [folderSlug, filterTextMainTodo]); 
 
   useEffect(()=>{
     locationStora()
   },[])
 
-
-
-
-    // const visibleTodos = folderSlug ? todos.filter(t => t.folder === folderSlug) : todos.filter(t => !t.folder)
-
-//     const todosInFolder = folderSlug 
-//     ? todos.filter(t => t.folder === folderSlug) 
-//     : todos.filter(t => !t.folder);
-
-//     const finalFilteredTodos = 
-//     todosInFolder.filter((item) => {
-//     if (filterText === "all") return true;
-//     if (filterText === "active") return item.done === true;
-//     if (filterText === "notActive") return item.done === false; 
-//     return true;
-// });
 
     return(
         <>        

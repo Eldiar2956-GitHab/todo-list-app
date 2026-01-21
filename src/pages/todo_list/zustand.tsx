@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { persist,createJSONStorage } from 'zustand/middleware';
 
 interface todoInfo {
     id: number;
@@ -161,4 +162,54 @@ export const useDarkMode = create<DarkMode>((set) => ({
         return { bakColor: nextColor };
     }),
 }));
+
+
+
+
+interface UserInfo {
+  name: string;
+  age: string;
+  city: string;
+  email: string;
+  userOnlayn: boolean;
+  infoUser: string;
+  SMSUser: boolean;
+}
+
+interface UserStore {
+  user: UserInfo;
+  updateUser: (newData: Partial<UserInfo>) => void;
+  resetUser: () => void;
+}
+
+const initialUser: UserInfo = {
+  name: 'Alexander Raymond',
+  age: '20',
+  city: 'New York, USA',
+  email: 'alex.design@gmail.com',
+  userOnlayn: false,
+  infoUser: 'Визуализатор смыслов. Помогаю брендам находить свой стиль через минимализм и типографику. Верю, что дизайн спасет мир.',
+  SMSUser: true,
+};
+
+export const useUserStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      user: initialUser,
+      updateUser: (newData) =>
+        set((state) => ({
+          user: { ...state.user, ...newData },
+        })),
+      resetUser: () => set({ user: initialUser }),
+    }),
+    {
+      name: 'user-profile-data',
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
+
+
+
+
 

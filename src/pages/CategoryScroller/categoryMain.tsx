@@ -29,7 +29,7 @@ export default function CatalogMain() {
                     <Link to="/" className="catalogText">Home</Link>
                     <Link to="/activZadanie" className="catalogText">Заделанные задачи</Link>
                     <Link to="/statistica" className="catalogText">Статистика</Link>
-                    <Link to="/ceatFon"  className="catalogText">Изменить фон</Link>
+                    <Link to="/profil"  className="catalogText">Профиль</Link>
                 </div>
 
                 <button onClick={toggleMenu} className="btnClose">Закрыть меню</button>

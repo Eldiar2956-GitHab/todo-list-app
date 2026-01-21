@@ -1,0 +1,35 @@
+.activBtnText{
+    width: 140px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: green;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+.activBtnText:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+.isActiveBtnText{
+    width: 140px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+.isActiveBtnText:hover{
+    background-color: darkred;
+    cursor: pointer;
+}
+.BtnISActive{
+    display: block;
+    text-align: center;
+    align-items: center;
+}
